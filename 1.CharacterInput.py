@@ -4,7 +4,6 @@
 # Print out that many copies of the previous message on separate lines. (Hint: the string "\n is the same as pressing the ENTER button)
 
 # Improvement Needed:
-# Loop entire program
 # Loop if invalid values
 
 import datetime
