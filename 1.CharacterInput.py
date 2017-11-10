@@ -3,40 +3,43 @@
 # Add on to the previous program by asking the user for another number and printing out that many copies of the previous message. (Hint: order of operations exists in Python)
 # Print out that many copies of the previous message on separate lines. (Hint: the string "\n is the same as pressing the ENTER button)
 
-# Improvement Needed:
-# Loop if invalid values
-
-import datetime
+from datetime import date
 
 repeat = "Y"
-repeat = repeat.upper()
 
-while (repeat == "Y"):
-    
-    name = raw_input("Please enter your name: ")
-    age = int(raw_input("Please enter your age: "))
-    birthday = raw_input("Did you already celebrate your birthday this year?, Enter Y or N: ")
-    printNum = int(raw_input("Desired count of print?, Please enter a number: "))
-    
-    birthday = birthday.upper()
-    
-    if birthday == "N":
-        age = age + 1
-    elif birthday == "Y":
-        age
-    else:
-        print "Invalid value provided."
-    
-    date = datetime.datetime.now()
-    year = date.year
-    
-    minus100 = 100 - age
-    year100 = year + minus100
-    
-    for i in range(printNum):
-        print "Hello %s! You will turn 100 years old in the year %d." % (name, year100)
-        
-    repeat = raw_input("Do you want to try again? Y or N: ")
-    repeat = repeat.upper()
+while repeat == "Y":
+
+    name = str(raw_input("Please enter your name: "))
+    a = True
+    while a is True:
+        try:
+            age = int(raw_input("What is your age? "))
+            a = False
+        except ValueError:
+            print "That is an invalid value. Please enter a number as your age and try again."
+    b = True
+    while b is True:
+        try:
+            num = int(raw_input("Enter a number from 1-5: "))
+            if num < 1 or num > 5:
+                print "That is an invalid value. Please enter a number from 1-5 and try again."
+            else:
+                b = False
+        except ValueError:
+            print "That is an invalid value. Please enter a number as your age and try again."
+
+    yearsto100 = 100 - age
+    currentyear = date.today().year
+    year100 = currentyear + yearsto100
+
+    print num * "Hello {}, you will turn 100 years old in the year {}.\n".format(name, year100)
+    c = True
+    while c is True:
+        repeat = raw_input("Do you want to try again? Y or N: ")
+        if repeat == "Y" or repeat == "y" or repeat == "N" or repeat == "n":
+            repeat = repeat.upper()
+            c = False
+        else:
+            print "That is an invalid value. Please enter Y or N and try again."
 
 print "Good-bye!"
